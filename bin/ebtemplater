@@ -8,15 +8,46 @@ var path     = require('path'),
     clc      = require('cli-color'),
     _        = require('underscore'),
     program  = require('commander'),
+    yaml     = require('js-yaml'),
+    fs       = require('fs'),
     pkg      = require(path.join(__dirname, '../', 'package.json'));
 
+var Extends = function(filePath){
+    this.klass = 'Extends';
+    this.filePath = filePath;
+};
+
+var ExtendsYamlType = new yaml.Type('!extends', {
+    kind: 'mapping',
+    construct: function(data){
+        data = data || {};
+        return new Extends(data.filePath);
+    },
+    instanceOf: Extends,
+    represent: function(extendz){
+        return [ extendz ];
+    }
+});
+
+
+var Extends_Schema = yaml.Schema.create([ ExtendsYamlType ]);
 program
-  .version(pkg.version)
-  .description('Provides inheritance for Elastic Beanstalk configurations')
-  .parse(process.argv);
+    .version(pkg.version)
+    .description('Provides inheritance for Elastic Beanstalk configurations')
+    .parse(process.argv);
 
 if(process.stdout.isTTY){
     console.error(clc.whiteBright.bold('%s v%s'), process.title, pkg.version);
 }
 
-if(_.isEmpty(program.env)) program.help();
+// if(_.isEmpty(program.env)) program.help();
+
+fs.readFile(path.join(__dirname, '../', 'test.yaml'), 'utf8', function(error, data){
+    if(!error){
+        loaded = yaml.load(data, { schema: Extends_Schema });
+        console.dir(loaded);
+    }
+    else{
+        console.error(error.stack || error.message || String(error));
+    }
+});
