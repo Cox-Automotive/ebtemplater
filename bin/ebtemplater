@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+'use strict';
+
+process.title = 'ebtemplater';
+
+var path     = require('path'),
+    async    = require('async'),
+    clc      = require('cli-color'),
+    _        = require('underscore'),
+    program  = require('commander'),
+    pkg      = require(path.join(__dirname, '../', 'package.json'));
+
+program
+  .version(pkg.version)
+  .description('Provides inheritance for Elastic Beanstalk configurations')
+  .parse(process.argv);
+
+if(process.stdout.isTTY){
+    console.error(clc.whiteBright.bold('%s v%s'), process.title, pkg.version);
+}
+
+if(_.isEmpty(program.env)) program.help();

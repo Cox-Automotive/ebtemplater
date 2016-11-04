@@ -1,0 +1,25 @@
+{
+  "name": "ebtemplater",
+  "version": "0.0.1",
+  "description": "Provides inheritance for Elastic Beanstalk configurations.",
+  "main": "bin/ebtemplater",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha ./test"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "ebtemplater": "bin/ebtemplater"
+  },
+  "repository": {
+    "url": "https://github.com/Cox-Automotive/ebtemplater.git",
+    "type": "git"
+  },
+  "author": "Brian Antonelli <brian.antonelli@coxautoinc.com>",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.1.2",
+    "cli-color": "^1.1.0",
+    "commander": "^2.9.0",
+    "underscore": "^1.8.3"
+  }
+}
