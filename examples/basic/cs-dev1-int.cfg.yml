@@ -1,0 +1,27 @@
+# Inherit shared configuration from base.yml
+extends:
+- !extend
+    filePath: ./base.yml
+
+# Set overrides for this environment
+OptionSettings:
+  aws:elasticbeanstalk:application:environment:
+    solrurl: http://solr-dev1.foobar.com/solr
+    siteinternal_context_name: //cs-dev1-int.awsmtnp.foobar.com
+    aemserverurl: http://daem4901.foobar.com:5503
+    atcsite_url_base: http://cs-dev1-int.awsmtnp.foobar.com
+    PORTCONFIG_DIR: dev
+    cs_gearbox_url: https://api-dev-origin.foobar.com
+  aws:elb:loadbalancer:
+    SSLCertificateId: arn:aws:acm:us-east-1:124124:certificate/2352352a-5c4b-1633-1a2b-a55177e54b9
+  aws:ec2:vpc:
+    Subnets: subnet-423f4042
+    VPCId: vpc-426c7f42
+    ELBSubnets: subnet-422f4042
+    ELBScheme: internal
+    AssociatePublicIpAddress: false
+  aws:autoscaling:launchconfiguration:
+    SecurityGroups: sg-1ed8f151
+    IamInstanceProfile: aws-elasticbeanstalk-ec2-role
+    InstanceType: c4.xlarge
+    EC2KeyName: cs-awsmtnp

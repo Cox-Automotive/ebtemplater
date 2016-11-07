@@ -19,8 +19,12 @@
   "dependencies": {
     "async": "^2.1.2",
     "cli-color": "^1.1.0",
+    "cli-table2": "^0.2.0",
     "commander": "^2.9.0",
     "js-yaml": "^3.6.1",
+    "lodash.merge": "^4.6.0",
+    "npm-registry-client": "^7.3.0",
+    "semver": "^5.3.0",
     "underscore": "^1.8.3"
   }
 }

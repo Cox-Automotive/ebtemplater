@@ -1,4 +1,0 @@
-pre: yo
-extends:
-- !extend
-  filePath: foo
