@@ -1,7 +1,7 @@
 # Inherit shared configuration from base.yml
 extends:
 - !extend
-    filePath: ./base.yml
+  filePath: ./base.yml
 
 # Set overrides for this environment
 OptionSettings:
