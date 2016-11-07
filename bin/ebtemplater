@@ -86,3 +86,5 @@ finalYml = [ '# Elastic Beanstalk Config - ', yamlFilePath.replace(/.yml/gi, '')
 
 console.log(clc.white('YAML generated as saved to: %s'), program.output);
 fs.writeFileSync(program.output, finalYml);
+
+utils.checkForUpdate();

@@ -1,6 +1,6 @@
 {
   "name": "ebtemplater",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "Provides inheritance for Elastic Beanstalk configurations.",
   "main": "bin/ebtemplater",
   "scripts": {
